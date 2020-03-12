@@ -29,36 +29,33 @@ const entries =
 "armaclintravels",
 "nerdy_brit"];
 const entriesLength = entries.length;
-let test;
+let transitionInterval; // meaningful rename
 
 let index = 0;
 
-const getRandomInt = arrayLength => {
-    return Math.floor(Math.random() * arrayLength)
-};
-const showNames = () => {
-    
+const getRandomInt = arrayLength =>  Math.floor(Math.random() * arrayLength); // shortened fat arrow
+
+const showNames = () => {    
     if (index < entriesLength){
-        document.getElementById("winnerDiv").innerHTML = entries[index];
+        document.querySelector("#winnerDiv").innerHTML = entries[index]; // document.querySelector()
         index++;
     }
     else
     {   
-        clearInterval(test);
+        clearInterval(transitionInterval);
         showWinner();
-    }
-    
+    }    
 }
 
-const pickWinner = ()=> {
-    test = setInterval(showNames, 200);
-    document.getElementById("button").style.display = "none";
+const pickWinner = () => { // formatting
+    transitionInterval = setInterval(showNames, 200);
+    document.querySelector("#button").style.display = "none"; // document.querySelector()
     
 }
 
 const showWinner = () => {
     const winner = entries[getRandomInt(entriesLength)];
-    document.getElementById("winnerDiv").innerHTML = `Congrats, @${winner}!!`;
-    document.getElementById("congratsDiv").innerHTML = `Congrats, @${winner}!!`;
+    document.querySelector("#winnerDiv").innerHTML = `Congrats, @${winner}!!`; // document.querySelector()
+    document.querySelector("#congratsDiv").innerHTML = `Congrats, @${winner}!!`; // document.querySelector()
 }
 
